@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Adonis</title>
+
+    <link rel="icon" href="/static/images/favicon.ico" />
+    <link rel="stylesheet" href="/static/css/style.css" />
+
+    <script>
+      fetch("https://api.lanyard.rest/v1/users/1390852759150133278")
+        .then((response) => response.json())
+        .then((data) => {
+          const avatarUrl = `https://cdn.discordapp.com/avatars/${
+            data.data.discord_user.id
+          }/${data.data.discord_user.avatar}${
+            data.data.discord_user.avatar.startsWith("a_") ? ".gif" : ".png"
+          }?size=512`;
+
+          const avatarImg = document.getElementById("userAvatar");
+          avatarImg.src = avatarUrl;
+        });
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <div class="container">
+        <div class="identity">
+          <div class="avatar-container">
+            <img
+              id="userAvatar"
+              class="avatar"
+              draggable="false"
+              alt="discord avatar"
+            />
+          </div>
+
+          <div class="user-info">
+            <h1 class="username">Adonis</h1>
+            <p class="about-me">
+              the world's <u>worst</u> developer
+              <span class="subtext">(i really mean it)</span>
+              <br />
+              15 years old / descriptive words / larpmaxxer
+            </p>
+          </div>
+
+          <div class="find-me">
+            <a
+              href="https://discord.com/users/1390852759150133278"
+              target="_blank"
+            >
+              <img alt="discord" src="/static/images/svg/discord.svg" />
+            </a>
+
+            <a href="https:/x.com/imadondonis" target="_blank">
+              <img alt="twitter" src="/static/images/svg/twitter.svg" />
+            </a>
+
+            <a href="https://github.com/adondonis" target="_blank">
+              <img alt="github" src="/static/images/svg/github.svg" />
+            </a>
+
+            <a href="https://yourworldoftext.com/~adondonis/" target="_blank">
+              <img alt="my world of text" src="/static/images/svg/notes.svg" />
+            </a>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="projects">
+          <h2>
+            projects
+            <span class="subtext">(👈 <strong>must</strong> be lowercase)</span>
+          </h2>
+          <p class="subtext">a few of the worst things you'll ever see</p>
+
+          <div class="project-cards">
+            <div class="project-card" onclick="openShowcase('swag')">
+              <h3>swag</h3>
+              <p>The best bot ever.</p>
+            </div>
+
+            <div class="project-card" onclick="openShowcase('nothing')">
+              <h3>nothing</h3>
+              <p>because i suck.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="showcase" class="showcase">
+        <div class="showcase-box">
+          <div class="showcase-header">
+            <h1 id="showcaseTitle">meowdy this should be the showcase title</h1>
+            <button class="showcase-close" onclick="closeShowcase()">✕</button>
+          </div>
+
+          <div id="showcaseContent" class="showcase-content">
+            aaand this should be the showcase content.
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/3.0.2/marked.min.js"></script>
+  <script src="/static/scripts/showcase.js"></script>
+  <script src="/static/scripts/drag.js"></script>
+</html>
